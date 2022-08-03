@@ -28,4 +28,34 @@ public:
 	friend Time operator != (const Time& one, const Time& two);
 	friend istream& operator >> (istream& is, Time& org);
 	friend ostream& operator << (ostream& os, const Time& original);
+	Time& operator++()
+	{
+		seconds += 1;
+		minutes += 1;
+		hours += 1;// изменяем «себя»
+		return *this; // возвращаем «себя»
+	}
+	Time operator++ (int s)
+	{
+		Time copy = *this;
+		seconds += 1;
+		minutes += 1;
+		hours += 1;// изменяем оригинал
+		return copy; // возвращаем копию
+	}
+	Time& operator--()
+	{
+		seconds -= 1;
+		minutes -= 1;
+		hours -= 1;// изменяем «себя»
+		return *this; // возвращаем «себя»
+	}
+	Time operator-- (int s)
+	{
+		Time copy = *this;
+		seconds -= 1;
+		minutes -= 1;
+		hours -= 1;// изменяем оригинал
+		return copy; // возвращаем копию
+	}
 };
